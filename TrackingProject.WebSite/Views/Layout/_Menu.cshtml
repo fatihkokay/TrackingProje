@@ -1,0 +1,137 @@
+﻿@using TrackingProject.WebSite.Utils
+
+<aside class="main-sidebar">
+    <!-- sidebar: style can be found in sidebar.less -->
+    <section class="sidebar">
+        <!-- Sidebar user panel -->
+        <div class="user-panel">
+            <div class="pull-left image">
+                <img src="~/dist/img/avatar5.png" class="img-circle" alt="User Image">
+            </div>
+            <div class="pull-left info">
+                <p>@BaseUtils.Users.Users.Username</p>
+                <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
+            </div>
+        </div>
+        <!-- search form -->
+        @*<form action="#" method="get" class="sidebar-form">
+            <div class="input-group">
+                <input type="text" name="q" class="form-control" placeholder="Ara...">
+                <span class="input-group-btn">
+                    <button type="submit" name="search" id="search-btn" class="btn btn-flat">
+                        <i class="fa fa-search"></i>
+                    </button>
+                </span>
+            </div>
+        </form>*@
+
+        <ul class="sidebar-menu" data-widget="tree">
+            <li class="header">MENÜ</li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-building-o"></i> <span>Firma Yönetimi</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Firm/Index"><i class="fa fa-circle-o"></i> Firmalar</a></li>
+                    <li><a href="/Firm/Create"><i class="fa fa-circle-o"></i> Yeni Firma</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i> <span>Kullanıcı Yönetimi</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/User/Index"><i class="fa fa-circle-o"></i> Kullanıcılar</a></li>
+                    <li><a href="/User/Create"><i class="fa fa-circle-o"></i> Yeni Kullanıcı</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-plus-circle"></i> <span>Tanımlamalar</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Vehicle"><i class="fa fa-circle-o"></i> Araçlar</a></li>
+                    <li><a href="/Vehicle/Create"><i class="fa fa-circle-o"></i> Yeni Araç</a></li>
+                    <li><a href="/Driver/Index"><i class="fa fa-circle-o"></i> Sürücüler</a></li>
+                    <li><a href="/Driver/Create"><i class="fa fa-circle-o"></i> Yeni Sürücü</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o"></i> Genel Ayarlar</a></li>
+                </ul>
+            </li>
+
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa  fa-user"></i> <span>Ebeveyn Yönetimi</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Parent/Index"><i class="fa fa-circle-o"></i> Ebeveynler</a></li>
+                    <li><a href="/Parent/Create"><i class="fa fa-circle-o"></i> Ebeveyn Tanımlama</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-users"></i> <span>Öğrenci Yönetimi</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Student/Index"><i class="fa fa-circle-o"></i> Öğrenciler</a></li>
+                    <li><a href="/Student/Create"><i class="fa fa-circle-o"></i> Öğrenci Tanımlama</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa  fa-flag-o"></i> <span>Planlama</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Route/Index"><i class="fa fa-circle-o"></i> Rotalar</a></li>
+                    <li><a href="/Route/Create"><i class="fa fa-circle-o"></i> Yeni Rota</a></li>
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-line-chart"></i> <span>Raporlar</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Report/RollCall"><i class="fa fa-circle-o"></i> Yoklama Raporu</a></li>
+                    <li><a href="/Report/Duration"><i class="fa fa-circle-o"></i> Araçta Geçen Süre Raporu</a></li>
+                    <li><a href="/Report/RouteDuration"><i class="fa fa-circle-o"></i> Rota Süre Raporu</a></li>
+                    <li><a href="/Report/Notify"><i class="fa fa-circle-o"></i> Bildirim Raporu</a></li>
+                   
+                </ul>
+            </li>
+            <li class="treeview">
+                <a href="#">
+                    <i class="fa fa-eye"></i> <span>İzleme Ekranları</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><a href="/Watch/Car"><i class="fa fa-circle-o"></i> Araç İzleme</a></li>
+                    <li><a href="/Watch/Route"><i class="fa fa-circle-o"></i> Rota İzleme</a></li>
+                  
+                </ul>
+            </li>
+        </ul>
+    </section>
+    <!-- /.sidebar -->
+</aside>

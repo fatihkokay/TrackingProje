@@ -1,0 +1,62 @@
+﻿@model TrackingProject.WebSite.Models.WatchViewModel
+@{
+    ViewBag.Title = "Araç İzleme";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        İzleme Ekranları
+        <small>Araç İzleme</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Home/Index"><i class="fa fa-dashboard"></i> Anasayfa</a></li>
+        <li class="active">Araç İzleme</li>
+    </ol>
+</section>
+<form method="post">
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-4 col-md-4 col-xs-12">
+                <div class="form-group">
+                    <label>Araç Plaka:</label>
+                    @Html.DropDownListFor(i => i.CarId, Model.Cars, new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-4 col-xs-12" style="padding-top:25px;">
+                <button type="button" onclick="Search()" class="btn btn-block btn-primary">İzlemeye Başla</button>
+            </div>
+            <div class="col-xs-12">
+                <div class="box">
+                    <div class="box-header">
+                        <h3 class="box-title">Harita</h3>
+                    </div>
+                    <!-- /.box-header -->
+                    <div class="box-body">
+                        
+                    </div>
+                    <!-- /.box-body -->
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /.col -->
+        </div>
+        <!-- /.row -->
+    </section>
+    <!-- /.content -->
+</form>
+@section Scripts{
+    <script src="../../bower_components/datatables.net/js/jquery.dataTables.min.js"></script>
+    <script src="../../bower_components/datatables.net-bs/js/dataTables.bootstrap.min.js"></script>
+
+   
+    <script>
+      
+    </script>
+}
+
+
+
+

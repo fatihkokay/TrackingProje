@@ -1,0 +1,247 @@
+﻿@model TrackingProject.WebSite.Models.RouteViewModel
+@{
+    ViewBag.Title = "Rota Tanımla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Planlama
+        <small>Rota Tanımlama</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Home/Index"><i class="fa fa-dashboard"></i> Anasayfa</a></li>
+        <li class="active">Rota Tanımlama</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Rota Tanımlama</h3>
+                </div>
+                <form id="Route" role="form" action="/Route/Create" method="post">
+                    @Html.HiddenFor(i => i.LocationPoint)
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label>Firmalar</label>
+                            @Html.DropDownListFor(i => i.FirmId, Model.Firms, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label>Sürücüler</label>
+                            @Html.DropDownListFor(i => i.DriverId, Model.Drivers, new { @class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label>Rota Tipi</label>
+                            <select id="RouteType" name="RouteType" class="form-control">
+                                <option value="0">Binme</option>
+                                <option value="1">İnme</option>
+                            </select>
+                        </div>
+                        <div class="form-group ">
+                            <label>Başlangıç Saati</label>
+                            <div class="bootstrap-timepicker">
+                                @Html.TextBoxFor(m => m.StartTime, new { Class = "form-control timepicker" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Okul Yoklama Saati</label>
+                            <div class="bootstrap-timepicker">
+                                @Html.TextBoxFor(m => m.SchoolExitTime, new { Class = "form-control timepicker" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Açıklama</label>
+                            @Html.TextBoxFor(m => m.Name, new { placeholder = "Açıklama", Class = "form-control" })
+                        </div>
+                        <div class="form-group" id="Partial">
+                        </div>
+                        <div class="form-group">
+                            <div style="height:400px;">
+                                <div id="map" style="height:100%;"></div>
+                            </div>
+                        </div>
+                    </div>
+                    @Html.HiddenFor(i => i.SaveStudents)
+                    <div class="box-footer">
+                        <button id="btnSave" type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+
+    <link rel="stylesheet" href="~/plugins/timepicker/bootstrap-timepicker.min.css">
+    <script src="~/plugins/timepicker/bootstrap-timepicker.min.js"></script>
+    <script>
+
+        $(document).ready(function ($) {
+            $('.timepicker').timepicker({
+                showInputs: false, showMeridian: false, minuteStep: 5
+            });
+
+            $('#Route').formValidation({
+                framework: "bootstrap4",
+                button: {
+                    selector: '#btnSave',
+                    disabled: 'disabled'
+                },
+                locale: 'tr_TR',
+                icon: null,
+                fields: {
+                    "Name": {
+                        validators: {
+                            notEmpty: {
+                            }
+                        }
+                    },
+                    "FirmId": {
+                        validators: {
+                            notEmpty: {
+                            }
+                        }
+                    },
+                    "DriverId": {
+                        validators: {
+                            notEmpty: {
+                            }
+                        }
+                    },
+                },
+                err: {
+                    clazz: 'has-error'
+                },
+                row: {
+                    invalid: 'has-error',
+                    valid: 'has-success'
+                }
+            });
+
+        });
+    </script>
+    <!--Firma Seç-->
+    <script>
+        $('#FirmId').change(function () {
+            $('#DriverId').empty();
+            $.ajax({
+                type: "Get",
+                url: '@Url.Action("GetDriver", "Route")',
+                datatype: "Json",
+                data: { FirmId: $('#FirmId').val() },
+                success: function (result) {
+                    $('#DriverId').empty();
+                    $.each(result.data, function (index, value) {
+                        $('#DriverId').append('<option value="' + value.Value + '">' + value.Text + '</option>');
+                    });
+                },
+                beforeSend: function () {
+
+                },
+                complete: function () {
+
+                },
+                error: function (xhr, status, err) {
+                    if (xhr.status === 999) {
+                        noAuthorize(this.url);
+                    } else {
+
+                    }
+                }
+            });
+            //Seçim Değişince
+            GetStudents();
+        });
+        GetStudents();
+        function GetStudents() {
+            $.ajax({
+                type: "GET",
+                dataType: "html",
+                url: '@Url.Action("GetStudents", "Route")',//'/Adres/TesisatBilgileri',
+                data: { FirmId: $('#FirmId').val() },
+                async: true,
+                success: function (result) {
+                    $('#Partial').html("");
+                    $('#Partial').html(result);
+                },
+                beforeSend: function () {
+                    $('#Partial').html("<div class='callout callout-info'><p>Öğrenci Listesi Yükleniyor</p></div>");
+                },
+                complete: function () {
+                },
+                error: function (xhr, status, err) {
+                    if (xhr.status === 999) {
+                        noAuthorize(this.url);
+                    } else {
+                        $('#Partial').html("<div class='callout callout-danger'><p>Öğrenci Listesi Yüklenemedi!</p></div>");
+                    }
+                }
+            });
+        }
+    </script>
+    <script>
+        var map;
+        var markers = [];
+        function initMap() {
+            map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: 37.87175863889165, lng: 32.49605469884693 },
+                zoom: 8
+            });
+            //google.maps.event.addListener(map, 'click', function (event) {
+            //    alert(event.latLng.lat());
+            //});
+
+
+            //google.maps.event.addListener(map, 'click', function (event) {
+            //    deleteMarkers();
+            //    var latitude = 0; // YOUR LATITUDE VALUE
+            //    var longitude = 0; // YOUR LONGITUDE VALUE
+            //    latitude = event.latLng.lat();
+            //    longitude = event.latLng.lng();
+            //    var myLatLng = { lat: latitude, lng: longitude };
+            //    var marker = new google.maps.Marker({
+            //        position: myLatLng,
+            //        map: map,
+            //        title: latitude + ', ' + longitude
+            //    });
+
+            //});
+
+            map.addListener('click', function (event) {
+                deleteMarkers();
+                addMarker(event.latLng);
+                $('#LocationPoint').val(event.latLng.lat() + ':' + event.latLng.lng());
+            });
+        }
+        function addMarker(location) {
+            var marker = new google.maps.Marker({
+                position: location,
+                map: map
+            });
+            markers.push(marker);
+        }
+        function setMapOnAll(map) {
+            for (var i = 0; i < markers.length; i++) {
+                markers[i].setMap(map);
+            }
+        }
+        function clearMarkers() {
+            setMapOnAll(null);
+        }
+        function deleteMarkers() {
+            clearMarkers();
+            markers = [];
+        }
+
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDNtbdI53OKv5IOmazepe-NKpF1GDxR1aY&callback=initMap"
+            async defer></script>
+
+}
+
+
+

@@ -1,0 +1,76 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingProject.Core", "TrackingProject.Core\TrackingProject.Core.csproj", "{963C748C-F080-4F91-B96C-2D9F959EF833}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingProject.Data", "TrackingProject.Data\TrackingProject.Data.csproj", "{7B1785EC-2517-44FF-A965-37EC24EEE790}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingProject.Service", "TrackingProject.Service\TrackingProject.Service.csproj", "{22D53579-B5D9-454D-920E-8A8BF3B1FCA5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingProject.WebSite", "TrackingProject.WebSite\TrackingProject.WebSite.csproj", "{91AE5629-3CDF-4743-BC1D-5D0ADB647799}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingProject.IOC", "TrackingProject.IOC\TrackingProject.IOC.csproj", "{7DB97B40-68A0-4EF8-B316-0783EB5F3696}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrackingProject.Api", "TrackingProject.Api\TrackingProject.Api.csproj", "{CD3423A7-B42C-4CAE-B888-F24E8B633A88}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{963C748C-F080-4F91-B96C-2D9F959EF833}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{963C748C-F080-4F91-B96C-2D9F959EF833}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{963C748C-F080-4F91-B96C-2D9F959EF833}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{963C748C-F080-4F91-B96C-2D9F959EF833}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B1785EC-2517-44FF-A965-37EC24EEE790}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B1785EC-2517-44FF-A965-37EC24EEE790}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B1785EC-2517-44FF-A965-37EC24EEE790}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B1785EC-2517-44FF-A965-37EC24EEE790}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22D53579-B5D9-454D-920E-8A8BF3B1FCA5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22D53579-B5D9-454D-920E-8A8BF3B1FCA5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22D53579-B5D9-454D-920E-8A8BF3B1FCA5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22D53579-B5D9-454D-920E-8A8BF3B1FCA5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91AE5629-3CDF-4743-BC1D-5D0ADB647799}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91AE5629-3CDF-4743-BC1D-5D0ADB647799}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91AE5629-3CDF-4743-BC1D-5D0ADB647799}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91AE5629-3CDF-4743-BC1D-5D0ADB647799}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7DB97B40-68A0-4EF8-B316-0783EB5F3696}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7DB97B40-68A0-4EF8-B316-0783EB5F3696}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7DB97B40-68A0-4EF8-B316-0783EB5F3696}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7DB97B40-68A0-4EF8-B316-0783EB5F3696}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CD3423A7-B42C-4CAE-B888-F24E8B633A88}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CD3423A7-B42C-4CAE-B888-F24E8B633A88}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CD3423A7-B42C-4CAE-B888-F24E8B633A88}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CD3423A7-B42C-4CAE-B888-F24E8B633A88}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(TeamFoundationVersionControl) = preSolution
+		SccNumberOfProjects = 7
+		SccEnterpriseProvider = {4CA58AB2-18FA-4F8D-95D4-32DDF27D184C}
+		SccTeamFoundationServer = https://fatihkokay.visualstudio.com/
+		SccLocalPath0 = .
+		SccProjectUniqueName1 = TrackingProject.Api\\TrackingProject.Api.csproj
+		SccProjectName1 = TrackingProject.Api
+		SccLocalPath1 = TrackingProject.Api
+		SccProjectUniqueName2 = TrackingProject.Core\\TrackingProject.Core.csproj
+		SccProjectName2 = TrackingProject.Core
+		SccLocalPath2 = TrackingProject.Core
+		SccProjectUniqueName3 = TrackingProject.Data\\TrackingProject.Data.csproj
+		SccProjectName3 = TrackingProject.Data
+		SccLocalPath3 = TrackingProject.Data
+		SccProjectUniqueName4 = TrackingProject.IOC\\TrackingProject.IOC.csproj
+		SccProjectName4 = TrackingProject.IOC
+		SccLocalPath4 = TrackingProject.IOC
+		SccProjectUniqueName5 = TrackingProject.Service\\TrackingProject.Service.csproj
+		SccProjectName5 = TrackingProject.Service
+		SccLocalPath5 = TrackingProject.Service
+		SccProjectUniqueName6 = TrackingProject.WebSite\\TrackingProject.WebSite.csproj
+		SccProjectName6 = TrackingProject.WebSite
+		SccLocalPath6 = TrackingProject.WebSite
+	EndGlobalSection
+EndGlobal

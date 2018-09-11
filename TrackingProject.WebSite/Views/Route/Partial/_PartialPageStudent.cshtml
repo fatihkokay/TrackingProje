@@ -1,0 +1,49 @@
+﻿@model TrackingProject.WebSite.Models.RouteViewModel
+<div class="row">
+    <div class="col-xs-5">
+        <select name="from" id="multiselect" class="form-control" size="8" multiple="multiple">
+            @foreach (var item in Model.Students)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+    <div class="col-xs-2">
+        <button type="button" id="multiselect_undo" class="btn btn-primary btn-block">Geri Al</button>
+        @* <button type="button" id="multiselect_rightAll" class="btn btn-block"><i class="glyphicon glyphicon-forward"></i></button>*@
+        <button type="button" id="multiselect_rightSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-right"></i></button>
+        <button type="button" id="multiselect_leftSelected" class="btn btn-block"><i class="glyphicon glyphicon-chevron-left"></i></button>
+        @*<button type="button" id="multiselect_leftAll" class="btn btn-block"><i class="glyphicon glyphicon-backward"></i></button>*@
+        <button type="button" id="multiselect_redo" class="btn btn-warning btn-block">İleri Al</button>
+    </div>
+    <div class="col-xs-5">
+        <select name="to" id="multiselect_to" class="form-control" size="8" multiple="multiple">
+            @foreach (var item in Model.HasStudents)
+            {
+                <option value="@item.Value">@item.Text</option>
+            }
+        </select>
+    </div>
+</div>
+
+<link href="~/Script/multiselect/css/style.css" rel="stylesheet" />
+<script src="~/Script/multiselect/dist/js/multiselect.js"></script>
+<script>
+    $(document).ready(function ($) {
+        $('#multiselect').multiselect({
+            search: {
+                left: '<input type="text" name="q" class="form-control" placeholder="Ara..." />',
+                right: '<input type="text" name="q" class="form-control" placeholder="Ara..." />',
+            },
+            fireSearch: function (value) {
+                return value.length >= 3;
+            }, afterMoveToRight: function ($left, $right, $options) {
+                console.log($options["0"].value);
+                $('#SaveStudents').val($options["0"].value + "," + $('#SaveStudents').val());
+            }, afterMoveToLeft: function ($left, $right, $options) {
+                console.log($options["0"].value);
+                $('#SaveStudents').val($('#SaveStudents').val().toString().replace($options["0"].value + ",", ''));
+            }
+        });
+    });
+</script>

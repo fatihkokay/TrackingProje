@@ -1,0 +1,96 @@
+﻿@model TrackingProject.WebSite.Models.FirmViewModel
+@{
+    ViewBag.Title = "Yeni Firma";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="content-header">
+    <h1>
+        Firma Yönetimi
+        <small>Firma Tanımlama</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Home/Index"><i class="fa fa-dashboard"></i> Anasayfa</a></li>
+        <li class="active">Firma Tanımlama</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Firma Tanımlama</h3>
+                </div>
+
+                <form id="Firm" role="form" action="/Firm/Create" method="post">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="InputName">Kodu</label>
+                            @Html.TextBoxFor(m => m.Code, new { placeholder = "Otomatik olarak atanacaktır", Class = "form-control", disabled = "false" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputName">Firma Ünvanı</label>
+                            @Html.TextBoxFor(m => m.Name, new { placeholder = "Firma Ünvanı", Class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label for="InputName">Durumu</label>
+                            <select id="Active" name="Active" class="form-control">
+                                <option value="1" @(Model.Active == 1 ? "selected" : "")>Kullanımda</option>
+                                <option value="0" @(Model.Active == 0 ? "selected" : "")>Kullanım Dışı</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="box-footer">
+                        <button id="btnSave" type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+    <script>
+        $(document).ready(function ($) {
+                $('#Firm').formValidation({
+                    framework: "bootstrap4",
+                    button: {
+                        selector: '#btnSave',
+                        disabled: 'disabled'
+                    },
+                    locale:'tr_TR',
+                    icon: null,
+                    fields: {
+                        "Code": {
+                            validators: {
+                                notEmpty: {
+                                }
+                           
+                            }
+                        },
+
+                        "Name": {
+                            validators: {
+                                notEmpty: {
+                                    //message: 'The password is required'
+                                }, stringLength: {
+                                    max: 500
+                                }
+                               
+                            }
+                        },
+                    },
+                    err: {
+                        clazz: 'has-error'
+                    },
+                    row: {
+                        invalid: 'has-error',
+                        valid:'has-success'
+                    }
+                });
+
+        });
+    </script>
+}

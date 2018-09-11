@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="a62817c5-02a9-447c-9543-29c2073f701c" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://soap.netgsm.com.tr:8080/Sms_webservis/SMS?wsdl" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="SMS.wsdl" MetadataType="Wsdl" ID="b33b4ddf-b8d7-4972-af22-3b96608f6394" SourceId="1" SourceUrl="http://soap.netgsm.com.tr:8080/Sms_webservis/SMS?wsdl" />
+    <MetadataFile FileName="SMS.xsd" MetadataType="Schema" ID="bd296c0c-494e-46e1-ae90-0ad6b8dab7c9" SourceId="1" SourceUrl="http://soap.netgsm.com.tr:8080/Sms_webservis/SMS?xsd=1" />
+    <MetadataFile FileName="SMS1.xsd" MetadataType="Schema" ID="7503c61d-c965-4624-a27d-1c28cfad91bc" SourceId="1" SourceUrl="http://soap.netgsm.com.tr:8080/Sms_webservis/SMS?xsd=2" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

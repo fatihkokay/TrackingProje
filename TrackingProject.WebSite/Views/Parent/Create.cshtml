@@ -1,0 +1,114 @@
+﻿@model TrackingProject.WebSite.Models.ParentViewModel
+@{
+    ViewBag.Title = "Ebeveyn Tanımla";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<section class="content-header">
+    <h1>
+        Tanımlamalar
+        <small>Ebeveyn Tanımlama</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href="/Home/Index"><i class="fa fa-dashboard"></i> Anasayfa</a></li>
+        <li class="active">Ebeveyn Tanımlama</li>
+    </ol>
+</section>
+
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <div class="box-header with-border">
+                    <h3 class="box-title">Ebeveyn Tanımlama</h3>
+                </div>
+
+                <form id="Parent" role="form" action="/Parent/Create" method="post">
+                    <div class="box-body">
+                       
+                        <div class="form-group">
+                            <label>Firmalar</label>
+                            @Html.DropDownListFor(i => i.FirmId, Model.Firms, new { @class = "form-control" })
+                        </div>
+                      
+                        <div class="form-group">
+                            <label>Ad</label>
+                            @Html.TextBoxFor(m => m.Name, new { placeholder = "Ad", Class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label>Soyad</label>
+                            @Html.TextBoxFor(m => m.Surname, new { placeholder = "Soyad", Class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label>Telefon</label>
+                            @Html.TextBoxFor(m => m.Phone, new { placeholder = "Telefon", Class = "form-control", @data_inputmask = "'mask': '9(999) 999 99 99'", @data_mask = "" })
+                        </div>
+                        <div class="form-group">
+                            <label>Şifre</label>
+                            @Html.PasswordFor(m => m.Password, new { placeholder = "Şifre", Class = "form-control" })
+                        </div>
+                        <div class="form-group">
+                            <label>Durumu</label>
+                            <select id="Active" name="Active" class="form-control">
+                                <option value="1" @(Model.Active == 1 ? "selected" : "")>Kullanımda</option>
+                                <option value="0" @(Model.Active == 0 ? "selected" : "")>Kullanım Dışı</option>
+                            </select>
+                        </div>
+                       
+                        </div>
+
+                    <div class="box-footer">
+                        <button id="btnSave" type="submit" class="btn btn-primary">Kaydet</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+@section scripts{
+
+<script src="~/plugins/input-mask/jquery.inputmask.js"></script>
+<script src="~/plugins/input-mask/jquery.inputmask.date.extensions.js"></script>
+<script src="~/plugins/input-mask/jquery.inputmask.extensions.js"></script>
+    <script>
+        $('[data-mask]').inputmask();
+        $(document).ready(function ($) {
+            $('#Parent').formValidation({
+                framework: "bootstrap4",
+                button: {
+                    selector: '#btnSave',
+                    disabled: 'disabled'
+                },
+                locale: 'tr_TR',
+                icon: null,
+                fields: {
+                   
+                    "Name": {
+                        validators: {
+                            notEmpty: {
+                            }
+                        }
+                    },
+                    "Surname": {
+                        validators: {
+                            notEmpty: {
+                            }
+
+                        }
+                    },
+                },
+                err: {
+                    clazz: 'has-error'
+                },
+                row: {
+                    invalid: 'has-error',
+                    valid: 'has-success'
+                }
+            });
+
+        });
+    </script>
+
+}
+
+
